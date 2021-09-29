@@ -1,38 +1,53 @@
-.App {
-  text-align: center;
+* {
+    padding: 0;
+    margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Start page */
+body {
+    background-color: cornsilk;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.contener {
+    width: 100%;
+    display: flex;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.start_img {
+    width: 50%;
 }
 
-.App-link {
-  color: #61dafb;
+.start_img img {
+    width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn_sart {
+    background-color: white;
+    color: black;
+    border: 1px solid rgb(155, 155, 245);
+    border-radius: 20px;
+    height: 3em;
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: 600;
 }
+.btn_sart:hover {
+    color:rgb(11, 11, 146);
+    background-color: rgb(104, 255, 235);
+    border: 2px solid rgb(11, 11, 146);;
+
+}
+
+.main_cont {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3em;
+    margin-top: 5em;
+}
+
+.main_cont h3 {
+    margin-top: 4em;
+    margin-bottom: 2em;
+}
+
+/* Start page End*/
