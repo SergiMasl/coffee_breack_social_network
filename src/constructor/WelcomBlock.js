@@ -3,22 +3,20 @@ import React from 'react';
 
 
 
-function WelcomBlock(handler) {
+function WelcomBlock({ handler }) {
     return ( 
             <div className='main_cont'>
                 <h1>Make it happening now</h1>
                 <h3>Join our coffee break community</h3>
                 <button 
                     className='btn_sart sign_in' 
-                    onClick={handler} 
-                    value='signIn'
+                    onClick={() => handler("signIn")} 
                     >
                         Sign in
                 </button>
                 <button 
                     className='btn_sart sign_up' 
-                    onClick={handler}
-                    value="signUp"
+                    onClick={() => handler("signUp")} 
                     >
                     Sign Up
                 </button>

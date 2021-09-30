@@ -3,40 +3,34 @@ import React, { Component } from 'react';
 import InfoStart from './constructor/InfoStart.js';
 import WelcomBlock from './constructor/WelcomBlock.js';
 
-class Sign extends Component {
+class App extends Component {
     constructor() {
         super();
         this.state = {
             status: '',
         }
     }
-} 
 
-const handler = (e) => {
-    if (e.target.value === 'signIn') {
-        this.setStatus({
-            status: 'signIn'
-        })  
-    } else if (e.target.value === 'signUp') {
-        this.setStatus({
-            status: 'signUp'
-        })  
+    handler = (status) => {
+        console.log(status)
+        this.setState({
+            status,
+        })
     }
 
-}
 
-
-function App() {
-    return ( 
-        <main className='contener'>
-            <InfoStart 
-                status={this.status}
-            />
-            <WelcomBlock 
-                handler={this.handler}
-            />
-        </main>
-    );
+    render() {
+        return ( 
+            <main className='contener'>
+                <InfoStart 
+                    status={this.state.status}
+                />
+                <WelcomBlock 
+                    handler={this.handler}
+                />
+            </main>
+        );
+    }
 }
 
 export default App;

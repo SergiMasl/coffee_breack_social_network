@@ -1,34 +1,18 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+import logo from './start.jpg';
 
-function InfoStart() {
-    return(
-        <Router>
+function InfoStart({status}) {
+    if (status === "signIn") {
+        return <p className='start_img'>'sing In'</p>
+    } else if (status === "signUp") {
+        return <p className='start_img'>'sing Up'</p>
+    } else {
+        return(
             <div className='start_img'>
-                <Switch>
-                    <Route path="/start">
-                        <div>
-                            <img src='./istockphoto-499906780-1024x1024.jpg' alt='Logo' />
-                        </div>
-                    </Route>
-                    <Route path="/signInForm">
-                        <signInForm />
-                    </Route>
-                    <Route path="/signUpForm">
-                        <signUpForm />
-                    </Route>
-                </Switch>
-            </div>
-        </Router>
-
-       
-       
-    )
+                <img src={logo} alt='Logo' />
+             </div>
+        )
+    }
 }
 
 export default InfoStart;
