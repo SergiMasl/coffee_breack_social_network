@@ -1,11 +1,20 @@
 import React from 'react';
 import logo from './start.jpg';
+import SignInForm from './SignInForm.js';
+import SignUpForm from './SignUpForm.js';
 
-function InfoStart({status}) {
+function InfoStart({status, userName, password, submitSingIn}) {
     if (status === "signIn") {
-        return <p className='start_img'>'sing In'</p>
+        return <div className='start_img'>
+                <SignInForm 
+                    userName={userName} 
+                    password={password} 
+                    submitSingIn={submitSingIn}/>
+            </div>
     } else if (status === "signUp") {
-        return <p className='start_img'>'sing Up'</p>
+        return <div className='start_img'>
+                <SignUpForm />
+            </div>
     } else {
         return(
             <div className='start_img'>

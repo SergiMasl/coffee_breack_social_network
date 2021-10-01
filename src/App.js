@@ -8,14 +8,19 @@ class App extends Component {
         super();
         this.state = {
             status: '',
+            userName: '',
+            password: '',
         }
     }
 
     handler = (status) => {
-        console.log(status)
         this.setState({
             status,
         })
+    }
+
+    submitSingIn = () => {
+        
     }
 
 
@@ -24,6 +29,9 @@ class App extends Component {
             <main className='contener'>
                 <InfoStart 
                     status={this.state.status}
+                    userName={this.state.userName}
+                    password={this.state.password}
+                    submitSingIn={this.submitSingIn}
                 />
                 <WelcomBlock 
                     handler={this.handler}
