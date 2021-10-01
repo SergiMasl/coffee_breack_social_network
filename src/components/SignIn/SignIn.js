@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import FormComponentSignIn from './FormComponentSignIn.js';
+import FormComponentSignIn from './FormTemplate.js';
+import apiService from "../../services/api.service.js";
+
 
 
 class SignInForm extends Component {
@@ -25,16 +27,10 @@ class SignInForm extends Component {
     }
 
     handleSubmit = () => {
-        fetch('http://localhost:5000/api/sign-in', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    userName: this.state.userName,
-                    password: this.state.password,
-                })
-            })
+        apiService.signIn({
+            userName: this.state.userName,
+            password: this.state.password,
+        })
             .then((response) => {
                 if (response.ok) {
                     alert('Yep')
@@ -47,6 +43,7 @@ class SignInForm extends Component {
     
                 console.dir(error)
             })
+        
     } 
     
     render() {

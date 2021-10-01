@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './start.jpg';
-import SignInForm from './SignInForm.js';
-import SignUpForm from './SignUpForm.js';
+import SignInForm from './SignIn/SignIn.js';
+import SignUpForm from './SignUp/SignUp.js';
 
 function InfoStart({status}) {
 
