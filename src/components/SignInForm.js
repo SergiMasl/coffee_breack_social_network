@@ -11,7 +11,6 @@ class SignInForm extends Component {
         };
         this.handleName = this.handleName.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
-        
     }
 
     handleName(e) {
@@ -26,7 +25,7 @@ class SignInForm extends Component {
     }
 
     handleSubmit = () => {
-        fetch('/api/', {
+        fetch('http://localhost:5000/api/sign-in', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
