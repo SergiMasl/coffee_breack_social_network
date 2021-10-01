@@ -1,37 +1,35 @@
-import React from 'react';
+import React, { Component } from "react";
 
-function SignInForm ({userName, password, submitSingIn}) {
-    return(
-        <form className='contener'>
+function FormComponentSignIn(props) {
+    return (
+       <form className='contener'>
             <div className='wrap_form'>
                 <h4>Sing in</h4>
                 <label>
-                    user name
+                User name
                     <input 
                         type='text' 
                         className='user_name_sign-in'
                         value={userName}
+                        placeholder="User name"
                     />
                 </label>
                 <label>
-                    user name
+                    Password
                     <input 
                         type='password' 
                         className='password_sign-in'
                         value={password}
+                        placeholder="Password"
                     />
                 </label>
-                <label>
+                <button
+                    type='button' 
+                    className='btn_sign-in'
+                    onClick={handleSubmit}>
                     Sign in
-                    <input 
-                        type='button' 
-                        className='btn_sign-in'
-                        onClick={submitSingIn}
-                    />
-                </label>
+                </button>
             </div>
         </form>
-    )
-}
-
-export default SignInForm;
+  }
+  export default FormComponent;

@@ -1,15 +1,13 @@
 import './App.css';
 import React, { Component } from 'react';
-import InfoStart from './constructor/InfoStart.js';
-import WelcomBlock from './constructor/WelcomBlock.js';
+import InfoStart from './components/InfoStart.js';
+import WelcomBlock from './components/WelcomBlock.js';
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
             status: '',
-            userName: '',
-            password: '',
         }
     }
 
@@ -20,7 +18,7 @@ class App extends Component {
     }
 
     submitSingIn = () => {
-        
+
     }
 
 
@@ -29,9 +27,6 @@ class App extends Component {
             <main className='contener'>
                 <InfoStart 
                     status={this.state.status}
-                    userName={this.state.userName}
-                    password={this.state.password}
-                    submitSingIn={this.submitSingIn}
                 />
                 <WelcomBlock 
                     handler={this.handler}

@@ -3,14 +3,12 @@ import logo from './start.jpg';
 import SignInForm from './SignInForm.js';
 import SignUpForm from './SignUpForm.js';
 
-function InfoStart({status, userName, password, submitSingIn}) {
+function InfoStart({status}) {
+
     if (status === "signIn") {
         return <div className='start_img'>
-                <SignInForm 
-                    userName={userName} 
-                    password={password} 
-                    submitSingIn={submitSingIn}/>
-            </div>
+                    <SignInForm />
+                </div>
     } else if (status === "signUp") {
         return <div className='start_img'>
                 <SignUpForm />
