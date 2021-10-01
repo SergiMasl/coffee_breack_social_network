@@ -10,8 +10,9 @@ function FormComponentSignIn(props) {
                     <input 
                         type='text' 
                         className='user_name_sign-in'
-                        value={userName}
+                        value={props.userName}
                         placeholder="User name"
+                        onChange={props.handleName}
                     />
                 </label>
                 <label>
@@ -19,17 +20,19 @@ function FormComponentSignIn(props) {
                     <input 
                         type='password' 
                         className='password_sign-in'
-                        value={password}
+                        value={props.password}
                         placeholder="Password"
+                        onChange={props.handlePassword}
                     />
                 </label>
                 <button
                     type='button' 
                     className='btn_sign-in'
-                    onClick={handleSubmit}>
+                    onClick={props.handleSubmit}>
                     Sign in
                 </button>
             </div>
-        </form>
+        </form>)
   }
-  export default FormComponent;
+
+  export default FormComponentSignIn;
