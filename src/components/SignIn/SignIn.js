@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FormComponentSignIn from './FormTemplate.js';
 import apiService from "../../services/api.service.js";
-
+import history from '../../history.js'
 
 
 class SignInForm extends Component {
@@ -32,18 +32,18 @@ class SignInForm extends Component {
             password: this.state.password,
         })
             .then((response) => {
-                if (response.ok) {
-                    alert('Yep')
+                if (response.ok) { 
                     return response.json();
                 } else {
-                    alert(`${response.status}: ${response.statusText}`)
+                    throw new Error('Something wrong');
                 }
             })
-            .catch(error => {
-    
-                console.dir(error)
+            .then((data) => {console.log(data)})
+            .then(() => {history.push('/about')})
+            .catch((error) => {
+                console.dir(error);
+                alert('Error: Something wrong')
             })
-        
     } 
     
     render() {

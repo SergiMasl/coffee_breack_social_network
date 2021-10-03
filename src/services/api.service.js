@@ -23,6 +23,28 @@ const apiService = {
             })
         )
     },
+    getNews: function(data) {
+        return (
+            fetch(`${baseURL}/api/news`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+        )
+    },
+    createNews: function(data) {
+        return (
+            fetch(`${baseURL}/api/creat-news`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+        )
+    },
 }
 
 export default apiService

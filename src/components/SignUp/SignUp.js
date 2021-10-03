@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import apiService from "../../services/api.service.js";
 import FormComponentSignUp from './FormTemplate.js';
+import history from '../../history.js'
+
 
 
 
@@ -37,7 +39,7 @@ class SignUpForm extends Component {
         })
             .then((response) => {
             if (response.ok) {
-                alert(`Thank you ${this.state.fName} ${this.state.lName}, you are sign up in the "Coffe-break" community`)
+                history.push('/about')
                 return response.json();
             } else {
                 alert(`${response.status}: ${response.statusText}`)

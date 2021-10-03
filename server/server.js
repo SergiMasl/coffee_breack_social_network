@@ -17,7 +17,7 @@ app.get("/api/news", (req, res) => {
     res.json(getNews())
 })
 
-app.post('/api/add', jsonParser, async(req, response) => {
+app.post('/api/creat-news', jsonParser, async(req, response) => {
     const { message } = req.body;
     const post = req.body
 
@@ -60,19 +60,17 @@ app.post('/api/start', jsonParser, async(req, res) => {
 });
 
 app.post("/api/sign-in", jsonParser, async(req, res) => {
-    console.log('yep')
     const user = req.body;
     const oldUsers = getUsers();
-    console.log(user)
 
     const checkUser = oldUsers.find(elem => {
-        if (elem.userName === user.userName && elem.password === user.password) {
+        if (elem.userName === user.userName && elem.password === user.userName) {
             return true;
         }
     })
     if (checkUser) {
         // нужно вернуть посты данного человека
-        return res.status(200).json({ message: 'success' }); //data
+        return res.status(200).json({ message: 'success', checkUser }); //data
     }
 
     res.statusMessage = "Login or Password is not match";

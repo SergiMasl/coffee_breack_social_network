@@ -1,8 +1,13 @@
 import './App.css';
 import React, { Component } from 'react';
 import Welcome from './components/Welcome.js';
+import About from './components/About.js';
+import history from './history.js'
+import CreatNews from './CreatNews.js'
+
 import {
-    BrowserRouter as Router,
+    Redirect,
+    Router,
     Switch,
     Route,
     Link
@@ -10,24 +15,26 @@ import {
 
 function App () {
     return (
-        <Router>
-            <div>
-                {/* <Link to='/welcome'>Welcome</Link> */}
-                {/* <br />
-                <Link to='/hew'>Hew</Link>
-                <Link to='/'>Home</Link> */}
-            </div>
+        <Router history={history}>
+            {/* <div>
+                <Link to='/'>Welcome</Link>
+                <br />
+                <Link to='/about'>About</Link>
+              
+            </div> */}
             <Switch>
-                <Route path='/'>
+                <Route path='/' exact>
                     <Welcome />
                 </Route>
                 
-                <Route path='/home'>
-                    <div>erget</div>
+                <Route path='/about'>
+                    <About />
                 </Route>
-                <Route path='/hew'>
-                    <p>Hew</p>
+                <Route path='/creat_news_form'>
+                    <CreatNews />
                 </Route>
+
+                
                 
             </Switch>
         </Router>
