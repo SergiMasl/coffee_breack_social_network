@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Welcome from './components/Welcome.js';
 import About from './components/About.js';
 import history from './history.js'
-import CreatNews from './CreatNews.js'
+import CreatNews from './components/CreatNews.js'
 
 import {
     Redirect,
@@ -16,12 +16,6 @@ import {
 function App () {
     return (
         <Router history={history}>
-            {/* <div>
-                <Link to='/'>Welcome</Link>
-                <br />
-                <Link to='/about'>About</Link>
-              
-            </div> */}
             <Switch>
                 <Route path='/' exact>
                     <Welcome />

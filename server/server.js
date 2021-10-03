@@ -17,19 +17,19 @@ app.get("/api/news", (req, res) => {
     res.json(getNews())
 })
 
-app.post('/api/creat-news', jsonParser, async(req, response) => {
-    const { message } = req.body;
+app.post('/api/creat-news', jsonParser, async(req, res) => {
     const post = req.body
 
     const addPost = () => {
-        const oldPost = getNews();
-        oldPost.push(post);
-        const newPost = JSON.stringify(oldPost);
+        const allNews = getNews();
+        allNews.push(post);
+        const jsonNews = JSON.stringify(allNews);
 
-        fs.writeFileSync('./news.json', newPost)
+        fs.writeFileSync('./news.json', jsonNews)
+        
     }
-
     addPost()
+    return res.status(200).json({ message: 'success' })
 });
 
 function getUsers() {

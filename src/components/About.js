@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import apiService from "../services/api.service.js";
-import addOldNews from './addOldNews.js'
+import Post from './Post.js'
+import history from '../history.js'
 
-class Home extends Component {
+
+class About extends Component {
     constructor() {
         super();
         this.state = {
@@ -22,7 +24,7 @@ class Home extends Component {
         })
         .then((data)=>{
             this.setState({
-                news: data,
+                news: data.reverse(),
             })
         })
         .catch((error)=> {
@@ -36,12 +38,13 @@ class Home extends Component {
     }
 
     render() {
-        console.log(this.state.news)
         return ( 
             <main className='contener'>
                 
                 <div className="contener_news">
-                    <addOldNews news={this.state.news}/>
+                    {   this.state.news.map((post) =>
+                            <Post data={post}/>)
+                    }
                 </div>
                
                 <div className='wrap_add-news'>
@@ -52,4 +55,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default About;
