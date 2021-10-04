@@ -5,7 +5,10 @@
 
 /* Start page */
 body {
-    background-color: cornsilk;
+    background-image: url(imgs/body.jpg);
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:100%;
 }
 
 .contener {

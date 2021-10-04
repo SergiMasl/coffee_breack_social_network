@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import InfoStart from './InfoStart.js';
 import WelcomBlock from './WelcomBlock.js';
 
+
 class Welcome extends Component {
     constructor() {
         super();
@@ -22,7 +23,7 @@ class Welcome extends Component {
 
     render() {
         return ( 
-            <main className='contener'>
+            <main className='contener' >
                 <InfoStart 
                     status={this.state.status}
                 />

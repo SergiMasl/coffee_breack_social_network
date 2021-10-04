@@ -1,5 +1,6 @@
-import './App.css';
-import React, { Component } from 'react';
+import './styles/App.css';
+import './styles/Forms.css';
+import React from 'react';
 import Welcome from './components/Welcome.js';
 import About from './components/About.js';
 import history from './history.js'
