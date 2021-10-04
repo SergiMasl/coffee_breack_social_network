@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function Post( {data} ) {
     if (data === undefined) {
         data = {

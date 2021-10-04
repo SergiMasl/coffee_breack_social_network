@@ -1,15 +1,12 @@
 .contener_form {
-    width: 60%;
+    width: 40%;
     border: 1px solid black;
     margin-left: auto;
     margin-right: auto;
-    margin-top: auto;
     border-radius: 10px;
     padding: 40px 20px 40px 20px;
     background: -webkit-linear-gradient(top, #7579ff, #b224ef);
 }
-
-
 
 .form_logo {
     margin: 0 auto;
@@ -42,12 +39,20 @@
     height: 25px;
     background: transparent;
     border: none;
-    border-bottom: 2px solid rgb(206, 206, 206);
+    border-bottom: 2px solid rgb(151, 151, 151);
     margin-bottom: 14px;
     padding-left: 10px ;
 }
-.input::after{
-    color:blue;
+
+.input:focus {
+    border-bottom: 2px solid white;
+    transition: .55s;
+    outline: none;
+}
+
+.input::placeholder {
+    color: white;
+    font-size: 16px;
 }
 
 .contaner_form_btm {

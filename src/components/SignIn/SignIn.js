@@ -38,7 +38,9 @@ class SignInForm extends Component {
                     throw new Error('Something wrong');
                 }
             })
-            .then((data) => {console.log(data)})
+            .then((data) => {
+                const newData = data.checkUser
+                this.props.onLoggin(newData)})
             .then(() => {history.push('/about')})
             .catch((error) => {
                 console.dir(error);

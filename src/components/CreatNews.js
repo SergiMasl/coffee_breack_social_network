@@ -36,6 +36,9 @@ class CreatNews extends Component {
         alert(error)
         })
     }
+    closed = () => {
+        history.push('/about')
+    }
 
     changeTitle = (e) => {
         this.setState({
@@ -50,18 +53,28 @@ class CreatNews extends Component {
   
     render() {
         return(
-            <div>
-                <h3>What is your news</h3>
+            <div className="wrap_news">
+                <div className='form_head'>
+                    <h3>Creat your news</h3>
+                    <button 
+                        className='closed_btm'
+                        onClick={this.closed}
+                    >x</button>
+                </div>
                 <div>
                     <div>
-                        <lable>
-                            <input type='text' className='title' onChange={this.changeTitle}/>
-                        </lable>
+                        <input 
+                            type='text' 
+                            className='input_text' 
+                            onChange={this.changeTitle}
+                            placeholder='Title'/>
+                        <input 
+                            type='text' 
+                            className='input_text' 
+                            onChange={this.changeText}
+                            placeholder='News'/>
                     </div>
                     <div>
-                        <lable className='wrap_text'>
-                            <input type='text' className='text' onChange={this.changeText}/>
-                        </lable>
                         {/* Добавить картинку */}
                         {/* Добавить эмодзи */}
                     </div>
