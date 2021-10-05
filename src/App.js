@@ -8,6 +8,7 @@ import history from './history.js'
 import CreatNews from './components/CreatNews.js'
 import SignInForm from './components/SignIn/SignIn.js'
 import SignUpForm from './components/SignUp/SignUp.js'
+import Profile from './components/Profile.js'
 
 
 import {
@@ -44,6 +45,7 @@ class  App extends Component {
                         {this.state.user.userName}
                     </p>
                 </header>
+               
                 <Switch>
                     <Route path='/' exact>
                         <Welcome />
@@ -61,7 +63,9 @@ class  App extends Component {
                     <Route path='/signup'>
                         <SignUpForm />
                     </Route>
-
+                    <Route path='/profile'>
+                        <Profile />
+                    </Route>
                     
                     
                 </Switch>

@@ -4,7 +4,7 @@
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
-    padding: 40px 20px 40px 20px;
+    padding: 20px 20px 20px 20px;
     background: -webkit-linear-gradient(top, #7579ff, #b224ef);
 }
 
@@ -18,7 +18,7 @@
 
 .form_logo {
     margin: 0 auto;
-    width: 30%;
+    width: 37%;
     border-radius: 50%;
 }
 
@@ -35,6 +35,7 @@
     text-align: center;
     text-transform: uppercase;
     display: block;
+    margin-bottom: 10px;
 }
 
 .input {
@@ -43,7 +44,7 @@
     color: #fff;
     line-height: 1.2;
     display: block;
-    width: 100%;
+    width: 97%;
     height: 25px;
     background: transparent;
     border: none;
@@ -83,4 +84,15 @@
     height: 50px;
     border-radius: 25px;
     transition: all 0.4s;
+}
+
+.closed_btm{
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    margin-left: 90%;
+}
+
+.closed_btm:hover {
+
 }

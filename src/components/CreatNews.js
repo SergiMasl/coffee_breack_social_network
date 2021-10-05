@@ -15,7 +15,9 @@ class CreatNews extends Component {
 
     addNews = () => {
         if (this.state.title === '' && this.state.text === '' ) {
-            return // TODO  add notification
+            return  
+            
+            // TODO  add notification
         } else {
 
         apiService.createNews(
@@ -58,38 +60,40 @@ class CreatNews extends Component {
   
     render() {
         return(
-            <div className="wrap_news">
-                <div className='form_head'>
-                    <h3>Creat your news</h3>
+            <span className='creat-news_contener'>
+                <div className="wrap_news">
+                    <div className='form_head'>
+                        <h3>Creat your news</h3>
+                        <button 
+                            className='closed_btm cld_btm_add-news'
+                            onClick={this.closed}
+                        >x</button>
+                    </div>
+                    <div>
+                        <div>
+                            <input 
+                                type='text' 
+                                className='input_text' 
+                                onChange={this.changeTitle}
+                                placeholder='Title'/>
+                            <input 
+                                type='text' 
+                                className='input_text extra_space_text' 
+                                onChange={this.changeText}
+                                placeholder='News'/>
+                        </div>
+                        <div>
+                            {/* Добавить картинку */}
+                            {/* Добавить эмодзи */}
+                        </div>
+                    </div>
                     <button 
-                        className='closed_btm'
-                        onClick={this.closed}
-                    >x</button>
+                        className='addNews' 
+                        onClick={this.addNews}
+                        >Add news
+                    </button>
                 </div>
-                <div>
-                    <div>
-                        <input 
-                            type='text' 
-                            className='input_text' 
-                            onChange={this.changeTitle}
-                            placeholder='Title'/>
-                        <input 
-                            type='text' 
-                            className='input_text' 
-                            onChange={this.changeText}
-                            placeholder='News'/>
-                    </div>
-                    <div>
-                        {/* Добавить картинку */}
-                        {/* Добавить эмодзи */}
-                    </div>
-                </div>
-                <button 
-                    className='addNews' 
-                    onClick={this.addNews}
-                    >Add news
-                </button>
-            </div>
+            </span>
         )
     }
 }
