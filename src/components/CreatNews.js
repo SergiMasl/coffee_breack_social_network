@@ -14,6 +14,10 @@ class CreatNews extends Component {
     }
 
     addNews = () => {
+        if (this.state.title === '' && this.state.text === '' ) {
+            return // TODO  add notification
+        } else {
+
         apiService.createNews(
             {
                 title: this.state.title,
@@ -35,7 +39,8 @@ class CreatNews extends Component {
         console.dir(error)
         alert(error)
         })
-    }
+    }}
+
     closed = () => {
         history.push('/about')
     }

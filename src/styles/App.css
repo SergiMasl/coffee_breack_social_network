@@ -5,6 +5,9 @@
 html {
     height: 100%;
 }
+#root {
+ height: 100%;
+}
 
 body {
     height: 100%;
@@ -39,8 +42,8 @@ body {
 .main_cont {
     display: flex;
     flex-direction: column;
-    margin-left: 3em;
-    margin-top: 5em;
+    margin: 0 auto;
+    margin-top: 100px;
 }
 
 .main_cont h3 {

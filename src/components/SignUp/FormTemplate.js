@@ -3,6 +3,7 @@ import logo from '../imgs/start.jpg';
 
 function FormComponentSignUp(props) {
     return (
+        <div className='form_wrapper'>
         <form className='contener_form'>
             <div className='form_logo'>
             <img src={logo} alt='Logo' />
@@ -83,6 +84,7 @@ function FormComponentSignUp(props) {
                 </div>
             </div>
         </form>
+        </div>
     )
 }
 

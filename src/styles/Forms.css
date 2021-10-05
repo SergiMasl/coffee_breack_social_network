@@ -1,11 +1,19 @@
 .contener_form {
-    width: 40%;
+    max-width: 30%;
     border: 1px solid black;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
     padding: 40px 20px 40px 20px;
     background: -webkit-linear-gradient(top, #7579ff, #b224ef);
+}
+
+
+.form_wrapper{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .form_logo {
