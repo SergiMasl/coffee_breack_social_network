@@ -21,10 +21,6 @@ function Post( {data} ) {
             <div className='main_news'>
                 <p className='news_body'>{data.text}</p>
             </div>
-            <div className='wrap_like'>
-                <p className='like_count'> 2</p>
-                <button className='add_like'>add like</button>
-            </div>
         </div>
     )
 }
