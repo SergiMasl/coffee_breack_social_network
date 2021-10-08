@@ -20,7 +20,7 @@ function FormComponentSignIn(props) {
                 </div>
                 <div className='wrap_form'>
                     <div className='form_head'>
-                        <h4>Sing in</h4>
+                        <h1>Sing in</h1>
                         
                     </div>
                     <span>

@@ -21,7 +21,7 @@ function FormComponentSignUp(props) {
                 </div>
                 <div className='wrap_form'>
                     <div className='form_head'>
-                        <h4>Sing Up</h4>
+                        <h1>Sing Up</h1>
                         
                     </div>
                     <span>

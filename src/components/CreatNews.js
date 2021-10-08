@@ -63,7 +63,7 @@ class CreatNews extends Component {
             <span className='creat-news_contener'>
                 <div className="wrap_news">
                     <div className='form_head'>
-                        <h3>Creat your news</h3>
+                        <h2>Creat your news</h2>
                         <button 
                             className='closed_btm cld_btm_add-news'
                             onClick={this.closed}

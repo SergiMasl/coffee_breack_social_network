@@ -9,14 +9,15 @@ function Post( {data} ) {
             text: '',
         }
     }
-    console.log(data)
+    
     return(
         <div className='wrap_news'>
+            
             <div className='head_news'>
-                <p className='loggin'>{data.autor}</p>
+            <h1 className='loggin'>{data.autor}</h1>
             </div>
             <div className='title'>
-                <p className='news_body'>{data.title}</p>
+                <h2 className='news_body'>{data.title}</h2>
             </div>
             <div className='main_news'>
                 <p className='news_body'>{data.text}</p>
