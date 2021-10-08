@@ -14,7 +14,7 @@ function Post( {data} ) {
         <div className='wrap_news'>
             
             <div className='head_news'>
-            <h1 className='loggin'>{data.autor}</h1>
+                <p className='loggin'>{data.autor}</p>
             </div>
             <div className='title'>
                 <h2 className='news_body'>{data.title}</h2>
