@@ -17,8 +17,7 @@ class SignUpForm extends Component {
             password: "",
             phone: "",
             email: "",
-            lName: "",
-            fName: "",
+            name: "",
         };        
     }
 
@@ -37,15 +36,14 @@ class SignUpForm extends Component {
             this.state.password === '' || 
             this.state.phone === '' || 
             this.state.email === '' ||
-            this.state.lName === ''
+            this.state.name === ''
         ) {
             return alert ('Заполнети поля')
         } else {
             
             apiService.signUp({
                 userName: this.state.userName,
-                fName: this.state.fName,
-                lName: this.state.lName,
+                name: this.state.name,
                 password: this.state.password,
                 email: this.state.email,
                 phone: this.state.phone,

@@ -73,8 +73,7 @@ app.post("/api/sign-in", jsonParser, async(req, res) => {
     if (checkUser) {
         const user = {
             userName: checkUser.userName,
-            fName: checkUser.fName,
-            lName: checkUser.lName,
+            name: checkUser.name,
             email: checkUser.email,
             phone: checkUser.phone,
         }

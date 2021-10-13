@@ -9,6 +9,17 @@ function FormComponentSignUp(props) {
         history.push('/')
     }
 
+    const xx = {
+        visibl: '',
+    }
+
+    // const change = (arg) => {
+       
+    //     console.log(arg);
+    //     xx.visibl = 'non-visible';
+    //     console.log(xx.visibl);
+    // }
+
     return (
         <div className='form_wrapper'>
             <form className='contener_form'>
@@ -21,28 +32,18 @@ function FormComponentSignUp(props) {
                 </div>
                 <div className='wrap_form'>
                     <div className='form_head'>
-                        <h1>Sing Up</h1>
+                        <h1>Sign Up</h1>
                         
                     </div>
                     <span>
                         <div className='wrap_input'>
                                 <input 
-                                    name='fName'
+                                    name='name'
                                     className='input'
                                     type='text' 
-                                    placeholder="First name or Company name"
+                                    placeholder="Name"
                                     onChange={props.handleUser}
-                                    value={props.fName}
-                                />
-                        </div>
-                        <div className='wrap_input'>
-                                <input 
-                                    className='input'
-                                    type='text' 
-                                    name='lName'
-                                    placeholder="Last name"
-                                    value={props.lName}
-                                    onChange={props.handleUser}
+                                    value={props.name}
                                 />
                         </div>
                         <div className='wrap_input'>
@@ -64,6 +65,10 @@ function FormComponentSignUp(props) {
                                     placeholder="Email"
                                     onChange={props.handleUser}
                                 />
+                                {/* <button 
+                                    className={xx.visibl}
+                                    onClick={change('phone')}
+                                >Use phone</button> */}
                         </div>
                         <div className='wrap_input'>
                                 <input 
@@ -74,7 +79,12 @@ function FormComponentSignUp(props) {
                                     placeholder="Phone"
                                     onChange={props.handleUser}
                                 />
+                                {/* <button 
+                                    lassName='link-signup non-visible'
+                                    onClick={change('mail')}
+                                >Use email mail</button> */}
                         </div>
+                        
                         <div className='wrap_input'>
                                 <input 
                                     className='input'

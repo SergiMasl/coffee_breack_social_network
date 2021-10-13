@@ -8,32 +8,32 @@ class CreatNews extends Component {
     constructor() {
         super();
         this.state = {
-            title: '',
             text: '',
-            author: '',
         }
     }
 
-    componentDidMount() {
-        console.log(this.props.userAuthor)
-    }
+    // componentDidMount() {
+    //     console.log(this.props.userAuthor)
+    // }
     
 
     addNews = () => {
-        if (this.state.title === '' && this.state.text === '' ) {
+        if (this.state.text === '' ) {
+            alert('News text not entered')
             return  
             
             // TODO  add notification
         } else {
 
         const time = Date.now()
-            
+        console.log(this.props.name)
+
         apiService.createNews(
             {
-                title: this.state.title,
                 text: this.state.text,
-                author: this.state.author,
+                name: this.props.user.name,
                 time: time,
+                userName: this.props.user.userName,
             }
         )
         .then((response) => {
@@ -83,18 +83,13 @@ class CreatNews extends Component {
                         <div>
                             <input 
                                 type='text' 
-                                className='input_text' 
-                                onChange={this.changeTitle}
-                                placeholder='Title'/>
-                            <input 
-                                type='text' 
                                 className='input_text extra_space_text' 
                                 onChange={this.changeText}
                                 placeholder='News'/>
                         </div>
                         <div>
                             {/* Добавить картинку */}
-                            {/* Добавить эмодзи */}
+                            
                         </div>
                     </div>
                     <button 

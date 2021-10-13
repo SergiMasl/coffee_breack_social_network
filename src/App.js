@@ -28,14 +28,12 @@ class  App extends Component {
             isLogged: false,
         };        
     }
-
+    
     handler = (data) => {
         this.setState({
             user: data,
             isLogged: true,
-            author: `${data.fName} ${data.lName}`,
         })
-        console.log(this.state)
     }
 
 
@@ -43,12 +41,6 @@ class  App extends Component {
         return (
             <div className='body'>
                 <Router history={history}>
-                    {/* <header className="header">
-                        <p className="header_text">
-                            {this.state.user.userName}
-                        </p>
-                    </header> */}
-                
                     <Switch>
                         <Route path='/' exact>
                             <Welcome />
@@ -58,7 +50,7 @@ class  App extends Component {
                             <About userStatus={this.state.isLogged}/>
                         </Route>
                         <Route path='/creat_news_form'>
-                            <CreatNews userAuthor={this.state.author}/>
+                            <CreatNews user={this.state.user}/>
                         </Route>
                         <Route path='/signin'>
                             <SignInForm onLoggin={this.handler}/>

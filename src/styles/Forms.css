@@ -1,11 +1,11 @@
 .contener_form {
     max-width: 30%;
-    border: 1px solid black;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
     padding: 20px 20px 20px 20px;
     background: -webkit-linear-gradient(top, #7579ff, #b224ef);
+    box-shadow: 6px 5px 7px 2px rgb(2 2 2 / 38%);
 }
 
 .form_wrapper{
@@ -71,6 +71,7 @@
 }
 
 .btn_sub {
+    background-color: #f7e5fff0;
     width: 80%;
     font-family: Poppins-Medium;
     font-size: 16px;
@@ -83,7 +84,14 @@
     min-width: 120px;
     height: 50px;
     border-radius: 25px;
-    transition: all 0.4s;
+    transition: all 0.3s;
+    box-shadow: inset 0px 0px 10px rgb(0 0 0 / 60%);
+    border: none;
+}
+
+.btn_sub:hover {
+    box-shadow: inset 0px 0px 10px rgb(0 0 0 / 60%);
+    background-color: #f0a7ff;
 }
 
 .closed_btm{
@@ -96,3 +104,4 @@
 .closed_btm:hover {
     box-shadow: inset 0px 0px 10px rgb(0 0 0 / 60%);
 }
+

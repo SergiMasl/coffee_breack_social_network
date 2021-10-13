@@ -4,26 +4,30 @@ import React from 'react';
 function Post( {data} ) {
     if (data === undefined) {
         data = {
-            title: '',
             text: '',
-            author: '',
+            name: '',
             time: '',
         }
     }
 
-    // const getTime = (t) => {
-    //     const y = t.getFullYear();
-    //     const m = t.getFullMonth();
-    //     const d = t.getFullDate(); 
-    //     return ( `${y}.${m}.${d}`);
-    // }
+    const getTime = (t) => {
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+        let date = new Date(t);
+        const y = date.getFullYear();
+        const m = date.getMonth();
+        const d = date.getDate(); 
+        return ( `${monthNames[m]} ${d}, ${y}`);
+    }
+
+    //let img = 'https://images.freeimages.com/images/large-previews/468/winter-wonderland-1383617.jpg'
+    //console.log(data)
     return(
         <div className='wrap_news'>
             
             <div className='head_news'>
-                <p className='loggin'>{data.author}</p>
-                {/* <p className='time'>{getTime(data.time)}</p> */}
+                <p className='loggin'>{data.name} <span className='logginDog'> @{data.userName} </span> </p>
+                <p className='time'>{getTime(data.time)}</p>
             </div>
             
             <div className='title'>
@@ -31,7 +35,10 @@ function Post( {data} ) {
             </div>
             <div className='main_news'>
                 <p className='news_body'>{data.text}</p>
-            </div>
+                {/* <div className='post-img-wrap'>
+                    <img src={img} className='post-img' />
+                </div> */}
+            </div> 
         </div>
     )
 }

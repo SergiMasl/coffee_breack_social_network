@@ -23,6 +23,9 @@
 
 .add-news:hover,
 .btm-nav:hover {
+    color:rgb(11, 130, 146);
+    background-color: #d68ff5;
+    border: 2px solid rgb(11, 11, 146, 0.336);
     box-shadow: inset 0px 0px 10px rgb(0 0 0 / 60%);
 }
 .contener_news {
@@ -30,7 +33,7 @@
 }
 
 .wrap_news {
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
     padding-left: 15px;
     border: none;
@@ -39,7 +42,7 @@
     margin-bottom: 15px;
     background-color: rgb(216, 210, 210);
     padding: 10px;
-    box-shadow: 8px 6px 10px rgb(0 0 0);
+    box-shadow: 5px 5px 8px 3px rgb(0 0 0 / 48%)
 }
 
 .wrap_news h2 {
@@ -47,20 +50,29 @@
 }
 
 .addNews {
+    background-color: #c769f0;
+    color: rgb(209, 209, 209);
+    border: 1px solid rgba(155, 155, 245, 0.5);
+    border-radius: 20px;
+    height: 3em;
+    font-weight: 600;
+    box-shadow: inset 0px 0px 10px rgb(0 0 0 / 60%);
+    
     margin: 0 auto;
     width: 80%;
     font-family: Poppins-Medium;
     font-size: 16px;
-    color: #555555;
-    line-height: 1.2;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 20px;
-    min-width: 120px;
-    height: 50px;
-    border-radius: 25px;
     transition: all 0.4s;
+}
+
+.addNews:hover {
+    color:rgb(11, 130, 146);
+    background-color: #d68ff5;
+    border: 2px solid rgb(11, 11, 146, 0.336);
 }
 
 .form_head {
@@ -95,11 +107,6 @@
 
 .extra_space_text {
     height: 300px;
-}
-
-.title {
-    display: flex;
-    justify-content: center;
 }
 
 .non-visible {
@@ -145,8 +152,31 @@
 }
 .head_news p {
     margin: 0;
+
+} 
+
+.loggin {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.logginDog {
+    color: grey;
+    font-size: 0.8em;
+    font-weight: lighter;
 }
 
 .time {
-    color: gray;
+    color: #6b5555;
+    font-weight: lighter;
+}
+
+.post-img-wrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.post-img {
+    max-width: 80%;
 }
