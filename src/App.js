@@ -33,6 +33,7 @@ class  App extends Component {
         this.setState({
             user: data,
             isLogged: true,
+            author: `${data.fName} ${data.lName}`,
         })
         console.log(this.state)
     }
@@ -57,7 +58,7 @@ class  App extends Component {
                             <About userStatus={this.state.isLogged}/>
                         </Route>
                         <Route path='/creat_news_form'>
-                            <CreatNews />
+                            <CreatNews userAuthor={this.state.author}/>
                         </Route>
                         <Route path='/signin'>
                             <SignInForm onLoggin={this.handler}/>

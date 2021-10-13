@@ -39,8 +39,7 @@ class SignInForm extends Component {
                 }
             })
             .then((data) => {
-                const newData = data.checkUser
-                this.props.onLoggin(newData)})
+                this.props.onLoggin(data.user)})
             .then(() => {history.push('/about')})
             .catch((error) => {
                 console.dir(error);

@@ -38,42 +38,51 @@ class About extends Component {
     }
 
     render() {
+
         const isLoggedIn = this.props.userStatus;
-        let signPop = isLoggedIn ? 'non-visible' :  'header';
-        let signOut = isLoggedIn ? 'header' :  'non-visible';
+        let signPop = isLoggedIn ? 'non-visible' :  'nav';
+        let signOut = isLoggedIn ? 'nav' :  'non-visible';
+        
         return ( 
             <main className="contener">
-                <div className={signPop}>
+                <nav className={signPop}>
                     <button 
-                        className='btn_sart sign_in' 
+                        className='btm-nav btm-nav-top' 
                         onClick={() => this.goTo("./signin")}
                         >
                         Sign in
                     </button>
                     <button 
-                        className='btn_sart sign_up' 
+                        className='btm-nav btm-nav-btn' 
                         onClick={() => this.goTo("./signup")} 
                         >
                         Sign Up
                     </button>
-                </div>
-                <div className={signOut}>
+                </nav>
+                <nav className={signOut}>
+                        <button 
+                            className='btm-nav btm-nav-top' 
+                            onClick={() => this.goTo("./profile")} 
+                        >
+                        Profile
+                    </button>
                     <button 
-                        className='btn_sart sign_up' 
+                        className='btm-nav btm-nav-btn' 
                         onClick={() => this.goTo("./")} 
                         >
                         Sign Out
                     </button>
-                </div>
+                </nav>
 
                 <div className="contener_news">
                     {   this.state.news.map((post) =>
-                            <Post data={post}/>)
+                            <Post data={post} key={post.id} 
+                            />)
                     }
                 </div>
                
                 <div className='wrap_add-news'>
-                   { isLoggedIn && (<button className='add-news' onClick={() => this.toGo('./creat_news_form')}>Add news</button>) }
+                   { isLoggedIn && (<button className='add-news' onClick={() => this.goTo('./creat_news_form')}>Add news</button>) }
                 </div>
             </main>
         );

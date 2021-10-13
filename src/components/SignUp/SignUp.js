@@ -37,11 +37,11 @@ class SignUpForm extends Component {
             this.state.password === '' || 
             this.state.phone === '' || 
             this.state.email === '' ||
-            this.state.lName === '' ||
-            this.state.fName === '' 
+            this.state.lName === ''
         ) {
             return alert ('Заполнети поля')
         } else {
+            
             apiService.signUp({
                 userName: this.state.userName,
                 fName: this.state.fName,
@@ -73,7 +73,7 @@ class SignUpForm extends Component {
                     }
                     pushNotify();
                     
-                    history.push('/')
+                    history.push('/signin')
                     return response.json();
                 } else {
                     alert(`${response.status}: ${response.statusText}`)

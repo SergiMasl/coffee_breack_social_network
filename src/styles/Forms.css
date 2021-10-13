@@ -8,7 +8,6 @@
     background: -webkit-linear-gradient(top, #7579ff, #b224ef);
 }
 
-
 .form_wrapper{
     display: flex;
     height: 100%;
@@ -18,8 +17,12 @@
 
 .form_logo {
     margin: 0 auto;
-    width: 37%;
+    width: 30%;
     border-radius: 50%;
+}
+
+.img-logo {
+    width: 100%;
 }
 
 .contener_form img {
@@ -27,15 +30,12 @@
     border-radius: 50%;
 }
 
-.wrap_form h4 {
+.wrap_form h1 {
     font-family: Poppins-Medium;
-    font-size: 30px;
+    font-size: 27px;
     color: #fff;
-    line-height: 1.2;
-    text-align: center;
     text-transform: uppercase;
-    display: block;
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 
 .input {
@@ -87,12 +87,12 @@
 }
 
 .closed_btm{
-    width: 30px;
-    height: 30px;
+    width: 21px;
+    height: 21px;
     border-radius: 50px;
-    margin-left: 90%;
+    margin-left: 95%;
 }
 
 .closed_btm:hover {
-
+    box-shadow: inset 0px 0px 10px rgb(0 0 0 / 60%);
 }

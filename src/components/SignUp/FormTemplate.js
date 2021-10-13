@@ -17,7 +17,7 @@ function FormComponentSignUp(props) {
                     onClick={closed}
                 >x</button>
                 <div className='form_logo'>
-                <img src={logo} alt='Logo' />
+                <img src={logo} alt='Logo' className='img-logo'/>
                 </div>
                 <div className='wrap_form'>
                     <div className='form_head'>
@@ -30,7 +30,7 @@ function FormComponentSignUp(props) {
                                     name='fName'
                                     className='input'
                                     type='text' 
-                                    placeholder="First name"
+                                    placeholder="First name or Company name"
                                     onChange={props.handleUser}
                                     value={props.fName}
                                 />

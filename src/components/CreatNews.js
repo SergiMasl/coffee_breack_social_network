@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import apiService from "../services/api.service.js";
 import history from '../history.js'
-import { render } from '@testing-library/react';
+// import { render } from '@testing-library/react';
 
 
 class CreatNews extends Component {
@@ -10,8 +10,14 @@ class CreatNews extends Component {
         this.state = {
             title: '',
             text: '',
+            author: '',
         }
     }
+
+    componentDidMount() {
+        console.log(this.props.userAuthor)
+    }
+    
 
     addNews = () => {
         if (this.state.title === '' && this.state.text === '' ) {
@@ -20,10 +26,14 @@ class CreatNews extends Component {
             // TODO  add notification
         } else {
 
+        const time = Date.now()
+            
         apiService.createNews(
             {
                 title: this.state.title,
                 text: this.state.text,
+                author: this.state.author,
+                time: time,
             }
         )
         .then((response) => {

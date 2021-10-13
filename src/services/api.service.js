@@ -14,7 +14,7 @@ const apiService = {
     },
     signUp: function(data) {
         return (
-            fetch(`${baseURL}/api/start`, {
+            fetch(`${baseURL}/api/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

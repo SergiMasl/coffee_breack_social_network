@@ -16,7 +16,7 @@ function FormComponentSignIn(props) {
                     onClick={closed}
                 >x</button>
                 <div className='form_logo'>
-                <img src={logo} alt='Logo' />
+                <img src={logo} alt='Logo'className='img-logo' />
                 </div>
                 <div className='wrap_form'>
                     <div className='form_head'>

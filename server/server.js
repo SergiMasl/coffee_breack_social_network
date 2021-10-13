@@ -4,6 +4,8 @@ const app = express();
 const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json();
 const cors = require('cors');
+const nanolib = require('nanoid');
+const nanoid = nanolib.nanoid;
 
 app.use(cors())
 
@@ -19,7 +21,7 @@ app.get("/api/news", (req, res) => {
 
 app.post('/api/creat-news', jsonParser, async(req, res) => {
     const post = req.body
-
+    post.id = Date.now();
     const addPost = () => {
         const allNews = getNews();
         allNews.push(post);
@@ -37,11 +39,11 @@ function getUsers() {
     return JSON.parse(rawdata);
 }
 
-app.post('/api/start', jsonParser, async(req, res) => {
+app.post('/api/signup', jsonParser, async(req, res) => {
     const log = req.body;
-
+    log.id = nanoid();
     const oldUsers = getUsers();
-
+    console.log(log)
     const existendUser = oldUsers.find(elem => {
         if (elem.userName === log.userName) {
             return true;
@@ -60,17 +62,24 @@ app.post('/api/start', jsonParser, async(req, res) => {
 });
 
 app.post("/api/sign-in", jsonParser, async(req, res) => {
-    const user = req.body;
+    //const user = req.body;
     const oldUsers = getUsers();
 
     const checkUser = oldUsers.find(elem => {
-        if (elem.userName === user.userName && elem.password === user.userName) {
+        if (elem.userName === req.body.userName && elem.password === req.body.password) {
             return true;
         }
     })
     if (checkUser) {
+        const user = {
+            userName: checkUser.userName,
+            fName: checkUser.fName,
+            lName: checkUser.lName,
+            email: checkUser.email,
+            phone: checkUser.phone,
+        }
         // нужно вернуть посты данного человека
-        return res.status(200).json({ message: 'success', checkUser }); //data
+        return res.status(200).json({ message: 'success', user }); //data
     }
 
     res.statusMessage = "Login or Password is not match";
