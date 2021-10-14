@@ -46,13 +46,13 @@ const apiService = {
         )
     },
     getProfile: function(data) {
+        console.log(data)
         return (
-            fetch(`${baseURL}/api/get-profile`, {
-                method: 'POST',
+            fetch(`${baseURL}/api/get-profile?chanel=${data}`, {
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(data)
             })
         )
     },

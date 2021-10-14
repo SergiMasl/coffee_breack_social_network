@@ -7,6 +7,7 @@ function Post( {data} ) {
             text: '',
             name: '',
             time: '',
+            userName: '',
         }
     }
 
@@ -20,9 +21,8 @@ function Post( {data} ) {
         return ( `${monthNames[m]} ${d}, ${y}`);
     }
 
-    const goTo = (id) => {
-        console.log(id)
-        history.push("./profile", [id])
+    const goTo = (userName) => {
+        history.push(`./chanels/${userName}`)
     }
 
     //let img = 'https://images.freeimages.com/images/large-previews/468/winter-wonderland-1383617.jpg'
@@ -34,7 +34,7 @@ function Post( {data} ) {
                 <p className='loggin'>{data.name} 
                     <button 
                         className='logginDog'
-                        onClick={() => goTo(data.id)}
+                        onClick={() => goTo(data.userName)}
                         > @{data.userName} </button> </p>
                 <p className='time'>{getTime(data.time)}</p>
             </div>

@@ -100,24 +100,26 @@ app.post("/api/sign-in", jsonParser, async(req, res) => {
 
 })
 
-app.post("/api/get-profile", jsonParser, async(req, res) => {
+app.get("/api/get-profile", jsonParser, async(req, res) => {
+    chanelName = req.query.chanel
+
     const oldUsers = getUsers();
 
     const checkUser = oldUsers.find(elem => {
-        if (elem.id == req.body.id) {
+        if (elem.userName === chanelName) {
             return true;
         }
     })
     if (checkUser) {
-        const user = {
-            //userName: checkUser.userName,
+        const chanel = {
+            userName: checkUser.userName,
             name: checkUser.name,
-           // email: checkUser.email,
-           // phone: checkUser.phone,
+            email: checkUser.email,
+            phone: checkUser.phone,
           //about: checkUser.about,
         }
         
-        return res.status(200).json({ message: 'success', user }); 
+        return res.status(200).json({ message: 'success', chanel }); 
     }
 
     res.statusMessage = "id is wrong";

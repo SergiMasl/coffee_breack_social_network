@@ -2,48 +2,50 @@ import React, { Component } from 'react';
 import '../styles/ProfileCSS.css';
 import apiService from "../services/api.service.js";
 import history from '../history.js'
+import { withRouter } from 'react-router-dom';
+import queryString from 'query-string';
+
 
 class Profile extends Component {
     constructor() {
         super();
         this.state = {
-            name: 'Fox News',
-            status: 'News Channel',
-            descriptions: ' The Fox News Channel, abbreviated FNC, commonly known as Fox News, and stylized in all caps, is an American multinational conservative cable news television channel based in New York City.',
+            visClass: 'non-visible',
+            name: '',
+            status: 'Here will be your status',
+            descriptions: 'Here will be your descriptions',
         }
     }
-     id1 = 1634162348657; //СNN
-     id2; // Это USER
 
-     //componentDidMount() {
+    componentDidMount() {
 
-         unknowUser = () => {
-            apiService.getProfile({
-                id: 1634162348657,
+        if (this.props.user) {
+                this.setState({
+                    name: this.props.user.name,
+                    visClass: 'btn_sub',
+            });
+        } else {
+
+            apiService.getProfile(this.props.match.params.chanelName)
+            .then((res) => {
+                if (res.ok) { 
+                    return res.json();
+                } else {
+                    throw new Error('Something wrong');
+                }
             })
-                .then((res) => {
-                    if (res.ok) { 
-                        return res.json();
-                    } else {
-                        throw new Error('Something wrong');
-                    }
+            .then((data) => {
+                this.setState({
+                    name: data.chanel.name,
                 })
-                .then((data) => {
-                    console(data)
-                    this.setState({
-                        name: data.name,
-                    })
-                    console(data)
-                })
-                .catch((error) => {
-                    console.dir(error);
-                    alert('Error: Something wrong')
-                })
+            })
+            .catch((error) => {
+                console.dir(error);
+                alert('Error: Something wrong')
+            })
         }
-    // }
-     
-        // id1 ?  : GOT id from user
-    // }
+    }
+
 
    
     goTo = (url) => {
@@ -53,8 +55,6 @@ class Profile extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.unknowUser}>Hello </button>
-
                 <div className="profile">
                     <div className="content">
                     <button 
@@ -65,8 +65,12 @@ class Profile extends Component {
                         <h3> { this.state.name } </h3>
                         <h4> { this.state.status } </h4>
                         <p> { this.state.descriptions } </p>
-                        {/* <button className='settingUser'>Setting</button> */}
-                        
+                        <div className='wrap-btn_sub '>
+                            <button 
+                                className={this.state.visClass}
+                                onClick={() => {this.goTo('/setting')}}
+                            >Setting</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -75,4 +79,4 @@ class Profile extends Component {
 }
 
 
-export default  Profile
+export default withRouter(Profile)

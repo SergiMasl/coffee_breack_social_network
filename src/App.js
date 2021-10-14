@@ -10,6 +10,7 @@ import SignInForm from './components/SignIn/SignIn.js'
 import SignUpForm from './components/SignUp/SignUp.js'
 import Profile from './components/Profile.js'
 import SignPopUp from './components/Profile.js'
+import Setting from './components/Setting.js'
 
 
 import {
@@ -54,15 +55,23 @@ class  App extends Component {
                         <Route path='/signup'>
                             <SignUpForm />
                         </Route>
-                        <Route path='/profile'>
+                        <Route path='/chanels/:chanelName'>
                             <Profile />
+                        </Route>
+                        <Route path='/profile/'>
+                            <Profile isMine={true} user={this.state.user}/>
                         </Route>
                         <Route path='/sign-popup'>
                             <SignPopUp />
                         </Route>
+                        <Route path='/setting'>
+                            <Setting />
+                        </Route>
                         <Route path='/' exact>
                             <Welcome />
                         </Route>
+                        
+                        
                         
                         
                     </Switch>
