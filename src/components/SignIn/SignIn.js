@@ -35,7 +35,7 @@ class SignInForm extends Component {
                 if (response.ok) { 
                     return response.json();
                 } else {
-                    throw new Error('Something wrong');
+                    throw new Error(response.statusText);
                 }
             })
             .then((data) => {
@@ -43,7 +43,7 @@ class SignInForm extends Component {
             .then(() => {history.push('/about')})
             .catch((error) => {
                 console.dir(error);
-                alert('Error: Something wrong')
+                alert(error.message)
             })
     } 
     

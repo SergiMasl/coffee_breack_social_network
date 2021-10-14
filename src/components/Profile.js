@@ -21,18 +21,19 @@ class Profile extends Component {
             apiService.getProfile({
                 id: 1634162348657,
             })
-                .then((response) => {
-                    if (response.ok) { 
-                        return response.json();
+                .then((res) => {
+                    if (res.ok) { 
+                        return res.json();
                     } else {
                         throw new Error('Something wrong');
                     }
                 })
                 .then((data) => {
+                    console(data)
                     this.setState({
                         name: data.name,
-                        userName: data.userName
                     })
+                    console(data)
                 })
                 .catch((error) => {
                     console.dir(error);
@@ -50,7 +51,6 @@ class Profile extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <div>
                 <button onClick={this.unknowUser}>Hello </button>

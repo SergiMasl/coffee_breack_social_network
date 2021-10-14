@@ -48,7 +48,7 @@ const apiService = {
     getProfile: function(data) {
         return (
             fetch(`${baseURL}/api/get-profile`, {
-                method: 'GET',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },

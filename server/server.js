@@ -6,6 +6,7 @@ const jsonParser = bodyParser.json();
 const cors = require('cors');
 const nanolib = require('nanoid');
 const nanoid = nanolib.nanoid;
+const CryptoJS = require("crypto-js");
 
 app.use(cors())
 
@@ -41,21 +42,31 @@ function getUsers() {
 
 app.post('/api/signup', jsonParser, async(req, res) => {
     const log = req.body;
-    log.id = nanoid();
+    
     const oldUsers = getUsers();
-    console.log(log)
     const existendUser = oldUsers.find(elem => {
         if (elem.userName === log.userName) {
             return true;
         }
     })
-
     if (existendUser) {
         res.statusMessage = "User alredy exist";
         return res.status(409).json({ message: 'User alredy exist' });
     }
 
-    oldUsers.push(log);
+    const security = getCredential(log.password);
+
+    const userSec = {
+        userName: log.userName,
+        name: log.name,
+        email: log.email,
+        phone: log.phone,
+        id: log.id = nanoid(),
+        passPhrase: security.passPhrase,
+        ciphertext: security.ciphertext,
+    }
+
+    oldUsers.push(userSec);
     const newlog = JSON.stringify(oldUsers)
     fs.writeFileSync('./login.json', newlog)
     return res.status(200).json({ message: 'success' });
@@ -66,10 +77,13 @@ app.post("/api/sign-in", jsonParser, async(req, res) => {
     const oldUsers = getUsers();
 
     const checkUser = oldUsers.find(elem => {
-        if (elem.userName === req.body.userName && elem.password === req.body.password) {
-            return true;
+        if (elem.userName === req.body.userName) {
+            if(checkPassword(req.body.password, elem.ciphertext, elem.passPhrase)) {
+                return true;
+            } 
         }
     })
+
     if (checkUser) {
         const user = {
             userName: checkUser.userName,
@@ -90,24 +104,24 @@ app.post("/api/get-profile", jsonParser, async(req, res) => {
     const oldUsers = getUsers();
 
     const checkUser = oldUsers.find(elem => {
-        if (elem.id === req.body.id) {
+        if (elem.id == req.body.id) {
             return true;
         }
     })
     if (checkUser) {
         const user = {
-            userName: checkUser.userName,
+            //userName: checkUser.userName,
             name: checkUser.name,
-            email: checkUser.email,
-            phone: checkUser.phone,
+           // email: checkUser.email,
+           // phone: checkUser.phone,
           //about: checkUser.about,
         }
         
         return res.status(200).json({ message: 'success', user }); 
     }
 
-    res.statusMessage = "id";
-    return res.status(401).json({ message: 'id is not match' });
+    res.statusMessage = "id is wrong";
+    return res.status(401).json({ message: 'id is wrong' });
 })
 
 
@@ -116,3 +130,24 @@ app.post("/api/get-profile", jsonParser, async(req, res) => {
 app.listen(5000, () => {
     console.log(`Example app listening at http://localhost:5000}`)
 })
+
+
+/////
+
+
+function getCredential(password) {
+    const passPhrase = nanoid();
+    const ciphertext = CryptoJS.AES.encrypt(passPhrase, password).toString();
+
+    return {
+        passPhrase,
+        ciphertext,
+    } 
+}   
+
+function checkPassword(password, ciphertext, passPhrase) {
+ const bytes  = CryptoJS.AES.decrypt(ciphertext, password);
+
+ console.log(password, ciphertext, passPhrase)
+ return passPhrase === bytes.toString(CryptoJS.enc.Utf8);
+}
