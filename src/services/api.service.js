@@ -45,6 +45,17 @@ const apiService = {
             })
         )
     },
+    getProfile: function(data) {
+        return (
+            fetch(`${baseURL}/api/get-profile`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+        )
+    },
 }
 
 export default apiService

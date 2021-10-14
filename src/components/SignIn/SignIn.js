@@ -49,7 +49,11 @@ class SignInForm extends Component {
     
     render() {
         return (
-            <FormComponentSignIn  handlePassword={this.handlePassword} handleName={this.handleName} {...this.state} handleSubmit={this.handleSubmit}/>
+            <FormComponentSignIn  
+                handlePassword={this.handlePassword} 
+                handleName={this.handleName} 
+                {...this.state} 
+                handleSubmit={this.handleSubmit}/>
            
         );
     }

@@ -1,0 +1,78 @@
+.profile {
+  width: 25em;
+  height: 30em;
+  background: -webkit-linear-gradient(top, #7579ffc4, #b224efe0);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6em;
+  bottom: 0;
+  margin: auto;
+  border-radius: 0.51em;
+  box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+}
+
+.content {
+  width: 25em;
+  height: 30em;
+}
+
+.profilePic {
+  width: 10em;
+  height: 10em;
+  margin: auto;
+  margin-top: -6em;
+  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSterQopokt37dESk7e7fsukVfvm_SHyKfSA&usqp=CAU);
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow: 0px 0px 4px 4pt #ffffff8a;
+} 
+
+.profile h3 {
+  color: #0b0063;  
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.profile h4 {
+  color:#8e8e8e;  
+  font-family: 'Roboto', sans-serif;
+  text-align:center;
+  font-size:1em;
+  margin-top:0.5em;
+}   
+
+  /* .setting{
+  position:absolute;
+  width:25em;
+  height:8em;
+  bottom:-0.2em;
+  background:#03315c; 
+  border-bottom-left-radius: 0.51em;
+  border-bottom-right-radius: 0.51em;
+  overflow:hidden;
+    } */
+
+.profile p {
+  width:18em;
+  height:5em;
+  font-size:1.2em;
+  margin:auto;
+  font-family: 'Roboto', sans-serif;
+  color: rgb(232 229 229);
+}
+ 
+.closed_prof {
+  width: 21px;
+    height: 21px;
+    border-radius: 50px;
+    margin-left: 92%;
+    margin-top: 2%;
+}
+
+.closed_prof:hover {
+    box-shadow: inset 0px 0px 10px rgb(0 0 0 / 60%);
+}

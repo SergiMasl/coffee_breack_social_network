@@ -164,6 +164,8 @@
     color: grey;
     font-size: 0.8em;
     font-weight: lighter;
+    border: none;
+    background: none;
 }
 
 .time {

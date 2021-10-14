@@ -86,7 +86,29 @@ app.post("/api/sign-in", jsonParser, async(req, res) => {
 
 })
 
+app.post("/api/get-profile", jsonParser, async(req, res) => {
+    const oldUsers = getUsers();
 
+    const checkUser = oldUsers.find(elem => {
+        if (elem.id === req.body.id) {
+            return true;
+        }
+    })
+    if (checkUser) {
+        const user = {
+            userName: checkUser.userName,
+            name: checkUser.name,
+            email: checkUser.email,
+            phone: checkUser.phone,
+          //about: checkUser.about,
+        }
+        
+        return res.status(200).json({ message: 'success', user }); 
+    }
+
+    res.statusMessage = "id";
+    return res.status(401).json({ message: 'id is not match' });
+})
 
 
 

@@ -42,10 +42,6 @@ class  App extends Component {
             <div className='body'>
                 <Router history={history}>
                     <Switch>
-                        <Route path='/' exact>
-                            <Welcome />
-                        </Route>
-                        
                         <Route path='/about'>
                             <About userStatus={this.state.isLogged}/>
                         </Route>
@@ -63,6 +59,9 @@ class  App extends Component {
                         </Route>
                         <Route path='/sign-popup'>
                             <SignPopUp />
+                        </Route>
+                        <Route path='/' exact>
+                            <Welcome />
                         </Route>
                         
                         
