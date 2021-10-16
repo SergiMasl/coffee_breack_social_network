@@ -97,6 +97,7 @@ app.post("/api/sign-in", jsonParser, async(req, res) => {
             status: checkUser.status,
             descriptions: checkUser.descriptions,
             photo: checkUser.photo,
+            id: checkUser.id,
         }
         // нужно вернуть посты данного человека
         return res.status(200).json({ message: 'success', user }); //data
@@ -134,6 +135,36 @@ app.get("/api/get-profile", jsonParser, async(req, res) => {
     res.statusMessage = "id is wrong";
     return res.status(401).json({ message: 'id is wrong' });
 })
+
+app.post('/api/update', jsonParser, async(req, res) => {
+    const oldUsers = getUsers();
+    const formData = req.body;
+
+    // const checkUser = oldUsers.find(elem => {
+    //     if (elem.id === formData.id) {
+    //         return true;
+    //     }
+    // })
+    const index = oldUsers.findIndex((item) => {
+        return item.id == formData.id
+    })
+
+    let user = oldUsers[index];
+
+    user.name = formData.name
+    user.name = formData.name
+    user.status = formData.status
+    user.descriptions = formData.descriptions
+    user.photo = formData.photo
+
+    oldUsers[index] = user
+
+    oldUsers[index] = JSON.stringify(oldUsers)
+    fs.writeFileSync('./login.json', oldUsers[index])
+    return res.status(200).json({ message: 'success',  user});
+    
+})
+
 
 
 

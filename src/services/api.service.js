@@ -56,6 +56,17 @@ const apiService = {
             })
         )
     },
+    subChange: function(data) {
+        return (
+            fetch(`${baseURL}/api/update`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+        )
+    },
 }
 
 export default apiService

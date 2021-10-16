@@ -67,7 +67,9 @@ class  App extends Component {
                             <SignPopUp />
                         </Route>
                         <Route path='/setting'>
-                            <Setting user={this.state.user}/>
+                            <Setting 
+                            user={this.state.user}
+                            update={this.handler}/>
                         </Route>
                         <Route path='/' exact>
                             <Welcome />
