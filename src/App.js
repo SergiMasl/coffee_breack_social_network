@@ -31,6 +31,7 @@ class  App extends Component {
     }
     
     handler = (data) => {
+        console.log(data)
         this.setState({
             user: data,
             isLogged: true,
@@ -39,6 +40,7 @@ class  App extends Component {
 
 
     render() {
+        
         return (
             <div className='body'>
                 <Router history={history}>
@@ -55,7 +57,7 @@ class  App extends Component {
                         <Route path='/signup'>
                             <SignUpForm />
                         </Route>
-                        <Route path='/chanels/:chanelName'>
+                        <Route path='/chanels/:chanelName' user={this.state.user}>
                             <Profile />
                         </Route>
                         <Route path='/profile/'>
@@ -65,7 +67,7 @@ class  App extends Component {
                             <SignPopUp />
                         </Route>
                         <Route path='/setting'>
-                            <Setting />
+                            <Setting user={this.state.user}/>
                         </Route>
                         <Route path='/' exact>
                             <Welcome />

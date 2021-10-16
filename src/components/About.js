@@ -76,7 +76,9 @@ class About extends Component {
 
                 <div className="contener_news">
                     {   this.state.news.map((post) =>
-                            <Post data={post} key={post.id} 
+                            <Post 
+                                data={post} 
+                                key={post.id} 
                             />)
                     }
                 </div>

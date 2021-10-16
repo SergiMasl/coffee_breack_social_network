@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import history from '../history.js'
+import apiService from "../services/api.service.js";
+
 
 class Setting extends Component {
     constructor() {
@@ -8,53 +10,62 @@ class Setting extends Component {
             name: '',
             status: '',
             descriptions: '',
+            photo: '',
         }
     }
+
 
     goTo = (url) => {
         history.push(url)
     }
 
+    // changeProf = (event) => {
+    //     const { name, value, } = event.target;
+    //     this.setState({
+    //         [name]: value,
+    //     });
+    //     console.log()
+    // }
+
     render() {
+        console.log(this.props.user)
         return (
             <span className='contener_sett'>
                 <div className="wrap_sett">
                     <div className='title_sett'>
-                        <h2>Update your Account</h2>
+                        
                         <button 
-                            className='closed_btm cld_btm_add-news'
+                            className='closed_sett'
                             onClick={() => {this.goTo('/profile')}}
                             >x</button>
                     </div>
                     <div>
+                        <h2>Update your Account</h2>
                         <div className='wrap_sett'>
                             <input 
                                 type='text' 
-                                placeholder='Change name'
-                                className='less_space'/>
-                            <input 
-                                type='text' 
                                 placeholder='Change status'
-                                className='less_space'/>
+                                className='less_space'
+                                //alue={status}
+                                name='status'
+                                onChange={this.changeProf}/>
                             <input 
                                 type='text' 
                                 placeholder='Change descriptions'
-                                className='extra_space'/>
-                            <input 
-                                type='number' 
-                                placeholder='Change Phone'
-                                className='less_space'/>
-                            <input 
-                                type='text' 
-                                placeholder='Change Email'
-                                className='less_space'/>
+                                className='extra_space'
+                                //value={descriptions}
+                                name='descriptions'
+                                onChange={this.changeProf}/>
                             <input 
                                 type='text' 
-                                placeholder='Change password'
-                                className='less_space'/>
+                                placeholder='Change Photo'
+                                className='less_space'
+                                //value={photo}
+                                name='photo'
+                                onChange={this.changeProf}/>
                             <button 
                                 className='save_sett'
-                                //onClick={() => {this.goTo('/setting')}}
+                                //onClick={() => {this.goTo()}}
                             >Save</button>
                         </div>
                     </div>

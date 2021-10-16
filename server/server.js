@@ -64,6 +64,9 @@ app.post('/api/signup', jsonParser, async(req, res) => {
         id: log.id = nanoid(),
         passPhrase: security.passPhrase,
         ciphertext: security.ciphertext,
+        status: 'Here will be your status',
+        descriptions: 'Here will be your descriptions',
+        photo: 'https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350'
     }
 
     oldUsers.push(userSec);
@@ -90,6 +93,10 @@ app.post("/api/sign-in", jsonParser, async(req, res) => {
             name: checkUser.name,
             email: checkUser.email,
             phone: checkUser.phone,
+            phone: checkUser.phone,
+            status: checkUser.status,
+            descriptions: checkUser.descriptions,
+            photo: checkUser.photo,
         }
         // нужно вернуть посты данного человека
         return res.status(200).json({ message: 'success', user }); //data
@@ -116,7 +123,9 @@ app.get("/api/get-profile", jsonParser, async(req, res) => {
             name: checkUser.name,
             email: checkUser.email,
             phone: checkUser.phone,
-          //about: checkUser.about,
+            status: checkUser.status,
+            descriptions: checkUser.descriptions,
+            photo: checkUser.photo,
         }
         
         return res.status(200).json({ message: 'success', chanel }); 

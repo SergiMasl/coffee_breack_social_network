@@ -10,12 +10,7 @@ class CreatNews extends Component {
         this.state = {
             text: '',
         }
-    }
-
-    // componentDidMount() {
-    //     console.log(this.props.userAuthor)
-    // }
-    
+    }    
 
     addNews = () => {
         if (this.state.text === '' ) {
@@ -26,7 +21,7 @@ class CreatNews extends Component {
         } else {
 
         const time = Date.now()
-        console.log(this.props.name)
+        console.log(this.props.user.name)
 
         apiService.createNews(
             {
@@ -35,6 +30,7 @@ class CreatNews extends Component {
                 time: time,
                 userName: this.props.user.userName,
             }
+            
         )
         .then((response) => {
             if (response.ok) { 

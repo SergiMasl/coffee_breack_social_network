@@ -28,7 +28,7 @@ class SignUpForm extends Component {
             });
             console.log()
     }
-
+ 
 
     handleSubmit = () => {
         if (
