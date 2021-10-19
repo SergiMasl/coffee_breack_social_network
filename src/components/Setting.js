@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import history from '../history.js'
 import apiService from "../services/api.service.js";
+import notification from "../services/notification.js";
 
 
 class Setting extends Component {
@@ -17,7 +18,7 @@ class Setting extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.user)
+        
         this.setState({
             id: this.props.user.id,
             name: this.props.user.name,
@@ -25,6 +26,7 @@ class Setting extends Component {
             descriptions: this.props.user.descriptions,
             photo: this.props.user.photo,
         })
+        
     }
 
     goTo = (url) => {
@@ -40,13 +42,7 @@ class Setting extends Component {
 
     submitChange = () => {
         apiService.subChange(
-            {
-                id: this.state.id,
-                name: this.state.name,
-                status: this.state.status,
-                descriptions: this.state.descriptions,
-                photo: this.state.photo,
-            }
+            {...this.state}
         )
         .then((response) => {
             if (response.ok) { 
@@ -57,19 +53,17 @@ class Setting extends Component {
         })
         .then((data) => {
             this.props.update(data.user)
-        })
-        .then(() => {
             this.goTo('/profile')
         })
         .catch((error)=> {
             console.dir(error)
-            alert(error)
+            notification.pushNotify('error', error)
         })
     }
 
     render() {
         return (
-            <span className='contener_sett'>
+            <div className='contener_sett'>
                 <div className="wrap_sett">
                     <div className='title_sett'>
                         
@@ -116,7 +110,7 @@ class Setting extends Component {
                         </div>
                     </div>
                 </div>
-            </span>
+            </div>
         )
     }
 }

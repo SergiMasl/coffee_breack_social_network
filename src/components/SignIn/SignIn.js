@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FormComponentSignIn from './FormTemplate.js';
 import apiService from "../../services/api.service.js";
+import notification from "../../services/notification.js";
 import history from '../../history.js'
 
 
@@ -28,8 +29,7 @@ class SignInForm extends Component {
 
     handleSubmit = () => {
         apiService.signIn({
-            userName: this.state.userName,
-            password: this.state.password,
+            ...this.state
         })
             .then((response) => {
                 if (response.ok) { 
@@ -39,11 +39,12 @@ class SignInForm extends Component {
                 }
             })
             .then((data) => {
+                notification.pushNotify('success', 'You are Log In')
                 this.props.onLoggin(data.user)})
             .then(() => {history.push('/about')})
             .catch((error) => {
                 console.dir(error);
-                alert(error.message)
+                notification.pushNotify('error', error.message)
             })
     } 
     

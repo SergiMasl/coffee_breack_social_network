@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import apiService from "../services/api.service.js";
+import notification from "../services/notification.js";
 import Post from './Post.js'
 import history from '../history.js'
 
@@ -27,7 +28,7 @@ class About extends Component {
         })
         .catch((error)=> {
             console.dir(error)
-            alert(error)
+            notification.pushNotify('error', error)
         })
     }
 
@@ -38,14 +39,10 @@ class About extends Component {
     }
 
     render() {
-
-        const isLoggedIn = this.props.userStatus;
-        let signPop = isLoggedIn ? 'non-visible' :  'nav';
-        let signOut = isLoggedIn ? 'nav' :  'non-visible';
-        
-        return ( 
-            <main className="contener">
-                <nav className={signPop}>
+        const isLoggedIn = this.props.isLogged;
+        let nav;
+        if (!isLoggedIn) {
+            nav = (<nav className='nav'>
                     <button 
                         className='btm-nav btm-nav-top' 
                         onClick={() => this.goTo("./signin")}
@@ -58,22 +55,28 @@ class About extends Component {
                         >
                         Sign Up
                     </button>
-                </nav>
-                <nav className={signOut}>
+                </nav>)
+        } else {
+            nav =  (<nav className='nav'>
                         <button 
                             className='btm-nav btm-nav-top' 
                             onClick={() => this.goTo("./profile")} 
                         >
                         Profile
-                    </button>
-                    <button 
-                        className='btm-nav btm-nav-btn' 
-                        onClick={() => this.goTo("./")} 
-                        >
-                        Sign Out
-                    </button>
-                </nav>
-
+                        </button>
+                        <button 
+                            className='btm-nav btm-nav-btn' 
+                            onClick={() => this.goTo("./")} 
+                            >
+                            Sign Out
+                        </button>
+                    </nav>)
+          
+        }
+        
+        return ( 
+            <main className="contener">
+                {nav}
                 <div className="contener_news">
                     {   this.state.news.map((post) =>
                             <Post 

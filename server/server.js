@@ -36,68 +36,61 @@ app.post('/api/creat-news', jsonParser, async(req, res) => {
 });
 
 function getUsers() {
-    let rawdata = fs.readFileSync('login.json')
+    let rawdata = fs.readFileSync('users.json')
     return JSON.parse(rawdata);
 }
 
 app.post('/api/signup', jsonParser, async(req, res) => {
-    const log = req.body;
+    const formData = req.body;
     
     const oldUsers = getUsers();
-    const existendUser = oldUsers.find(elem => {
-        if (elem.userName === log.userName) {
-            return true;
-        }
-    })
+
+    const existendUser = oldUsers[formData.userName]
+
     if (existendUser) {
         res.statusMessage = "User alredy exist";
         return res.status(409).json({ message: 'User alredy exist' });
     }
 
-    const security = getCredential(log.password);
+    const credantials = getCredential(formData.password);
 
-    const userSec = {
-        userName: log.userName,
-        name: log.name,
-        email: log.email,
-        phone: log.phone,
-        id: log.id = nanoid(),
-        passPhrase: security.passPhrase,
-        ciphertext: security.ciphertext,
+    const newUser = {
+        userName: formData.userName,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        id: formData.id = nanoid(),
+        passPhrase: credantials.passPhrase,
+        ciphertext: credantials.ciphertext,
         status: 'Here will be your status',
         descriptions: 'Here will be your descriptions',
         photo: 'https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350'
     }
-
-    oldUsers.push(userSec);
-    const newlog = JSON.stringify(oldUsers)
-    fs.writeFileSync('./login.json', newlog)
+    oldUsers[formData.userName] = newUser
+    fs.writeFileSync('./users.json', JSON.stringify(oldUsers))
     return res.status(200).json({ message: 'success' });
 });
 
 app.post("/api/sign-in", jsonParser, async(req, res) => {
-    //const user = req.body;
+    const formData = req.body;
     const oldUsers = getUsers();
 
-    const checkUser = oldUsers.find(elem => {
-        if (elem.userName === req.body.userName) {
-            if(checkPassword(req.body.password, elem.ciphertext, elem.passPhrase)) {
-                return true;
-            } 
-        }
-    })
+    let isUserExist = oldUsers[formData.userName]
 
-    if (checkUser) {
+    const oldUser = oldUsers[formData.userName]
+    let isPasswordVailed = checkPassword(req.body.password, oldUser.ciphertext, oldUser.passPhrase)
+
+    if (isUserExist && isPasswordVailed) {
         const user = {
-            userName: checkUser.userName,
-            name: checkUser.name,
-            email: checkUser.email,
-            phone: checkUser.phone,
-            phone: checkUser.phone,
-            status: checkUser.status,
-            descriptions: checkUser.descriptions,
-            photo: checkUser.photo,
-            id: checkUser.id,
+            userName: oldUser.userName,
+            name: oldUser.name,
+            email: oldUser.email,
+            phone: oldUser.phone,
+            phone: oldUser.phone,
+            status: oldUser.status,
+            descriptions: oldUser.descriptions,
+            photo: oldUser.photo,
+            id: oldUser.id,
         }
         // нужно вернуть посты данного человека
         return res.status(200).json({ message: 'success', user }); //data
@@ -109,15 +102,11 @@ app.post("/api/sign-in", jsonParser, async(req, res) => {
 })
 
 app.get("/api/get-profile", jsonParser, async(req, res) => {
-    chanelName = req.query.chanel
-
     const oldUsers = getUsers();
 
-    const checkUser = oldUsers.find(elem => {
-        if (elem.userName === chanelName) {
-            return true;
-        }
-    })
+    checkUser = oldUsers[req.query.chanel]
+   
+
     if (checkUser) {
         const chanel = {
             userName: checkUser.userName,
@@ -138,31 +127,14 @@ app.get("/api/get-profile", jsonParser, async(req, res) => {
 
 app.post('/api/update', jsonParser, async(req, res) => {
     const oldUsers = getUsers();
-    const formData = req.body;
-
-    // const checkUser = oldUsers.find(elem => {
-    //     if (elem.id === formData.id) {
-    //         return true;
-    //     }
-    // })
-    const index = oldUsers.findIndex((item) => {
-        return item.id == formData.id
-    })
-
-    let user = oldUsers[index];
-
-    user.name = formData.name
-    user.name = formData.name
-    user.status = formData.status
-    user.descriptions = formData.descriptions
-    user.photo = formData.photo
-
-    oldUsers[index] = user
-
-    oldUsers[index] = JSON.stringify(oldUsers)
-    fs.writeFileSync('./login.json', oldUsers[index])
-    return res.status(200).json({ message: 'success',  user});
+    formData = req.body
+    checkUser = oldUsers[formData.userName]
     
+    let user = {... checkUser, ... formData};
+    oldUsers[formData.userName] = user
+    
+    fs.writeFileSync('./users.json', JSON.stringify(oldUsers))
+    return res.status(200).json({ message: 'success',  user});
 })
 
 

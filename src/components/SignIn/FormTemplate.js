@@ -4,7 +4,7 @@ import history from '../../history.js'
 
 function FormComponentSignIn(props) {
 
-    const closed = () => {
+    const goTo = () => {
         history.push('/')
     }
 
@@ -13,7 +13,7 @@ function FormComponentSignIn(props) {
             <form className='contener_form'>
                 <button 
                     className='closed_btm'
-                    onClick={closed}
+                    onClick={goTo}
                 >x</button>
                 <div className='form_logo'>
                 <img src={logo} alt='Logo'className='img-logo' />
@@ -23,7 +23,7 @@ function FormComponentSignIn(props) {
                         <h1>Sign in</h1>
                         
                     </div>
-                    <span>
+                    <div>
 
                         <div className='wrap_input'>
                             <input 
@@ -44,7 +44,7 @@ function FormComponentSignIn(props) {
                             />
                         </div>
 
-                    </span>
+                    </div>
                     <div className='contaner_form_btm'>
                         <button
                             type='button' 

@@ -1,23 +1,19 @@
 import React from 'react';
 import history from '../history.js'
+const defaultData = {
+    text: '',
+    name: '',
+    time: '',
+    userName: '',
+}
 
-function Post( {data} ) {
-    if (data === undefined) {
-        data = {
-            text: '',
-            name: '',
-            time: '',
-            userName: '',
-        }
-    }
+function Post( {data = defaultData} ) {
 
     const getTime = (t) => {
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-        let date = new Date(t);
-        const y = date.getFullYear();
-        const m = date.getMonth();
-        const d = date.getDate(); 
+        const y = new Date(t).getFullYear();
+        const m = new Date(t).getMonth();
+        const d = new Date(t).getDate(); 
         return ( `${monthNames[m]} ${d}, ${y}`);
     }
 

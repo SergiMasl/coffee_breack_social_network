@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import apiService from "../services/api.service.js";
 import history from '../history.js'
-// import { render } from '@testing-library/react';
+import notification from "../services/notification.js";
 
 
 class CreatNews extends Component {
@@ -12,22 +12,17 @@ class CreatNews extends Component {
         }
     }    
 
-    addNews = () => {
+    addPost = () => {
         if (this.state.text === '' ) {
-            alert('News text not entered')
+            notification.pushNotify('error', 'Post text not entered')
             return  
-            
-            // TODO  add notification
         } else {
-
-        const time = Date.now()
-        console.log(this.props.user.name)
 
         apiService.createNews(
             {
                 text: this.state.text,
                 name: this.props.user.name,
-                time: time,
+                time: Date.now(),
                 userName: this.props.user.userName,
             }
             
@@ -49,7 +44,7 @@ class CreatNews extends Component {
         })
     }}
 
-    closed = () => {
+    goTo = () => {
         history.push('/about')
     }
 
@@ -66,35 +61,26 @@ class CreatNews extends Component {
   
     render() {
         return(
-            <span className='creat-news_contener'>
+            <div className='creat-news_contener'>
                 <div className="wrap_news">
                     <div className='form_head'>
                         <h2>Creat your news</h2>
                         <button 
                             className='closed_btm cld_btm_add-news'
-                            onClick={this.closed}
+                            onClick={this.goTo}
                         >x</button>
                     </div>
-                    <div>
-                        <div>
-                            <input 
-                                type='text' 
-                                className='input_text extra_space_text' 
-                                onChange={this.changeText}
-                                placeholder='News'/>
-                        </div>
-                        <div>
-                            {/* Добавить картинку */}
-                            
-                        </div>
-                    </div>
+                        <textarea 
+                            className='input_text extra_space_text' 
+                            onChange={this.changeText}
+                            placeholder='News'/>
                     <button 
-                        className='addNews' 
-                        onClick={this.addNews}
-                        >Add news
+                        className='addPost' 
+                        onClick={this.addPost}
+                        >Add post
                     </button>
                 </div>
-            </span>
+            </div>
         )
     }
 }

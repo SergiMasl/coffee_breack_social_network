@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 /server/news.json
-/server/login.json
+/server/users.json

@@ -46,7 +46,7 @@ class  App extends Component {
                 <Router history={history}>
                     <Switch>
                         <Route path='/about'>
-                            <About userStatus={this.state.isLogged}/>
+                            <About isLogged={this.state.isLogged}/>
                         </Route>
                         <Route path='/creat_news_form'>
                             <CreatNews user={this.state.user}/>

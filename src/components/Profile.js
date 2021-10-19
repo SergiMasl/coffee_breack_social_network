@@ -4,6 +4,7 @@ import apiService from "../services/api.service.js";
 import history from '../history.js'
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
+import notification from "../services/notification.js";
 
 
 class Profile extends Component {
@@ -49,7 +50,7 @@ class Profile extends Component {
             })
             .catch((error) => {
                 console.dir(error);
-                alert('Error: Something wrong')
+                notification.pushNotify('error', 'Error: Something wrong')
             })
         }
     }
