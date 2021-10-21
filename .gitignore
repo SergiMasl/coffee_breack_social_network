@@ -22,5 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/server/news.json
-/server/users.json
+# /server/news.json
+# /server/users.json
