@@ -6,11 +6,11 @@
     align-items: center;
 }
 
-.wrap_add-news, .add-news {
+.add-news {
     border-radius: 50%;
     position: absolute;
-    right: 15px;
-    top: 15px;
+    right: 35px;
+    top: 30px;
     width: 80px;
     height: 80px;
     font-family: Poppins-Medium;
@@ -19,6 +19,7 @@
     align-items: center;
     transition: all 0.3s;
     box-shadow:  0px 0px 10px rgb(0 0 0 / 60%);
+    background: radial-gradient(#a8aaf7, #cf5fff);
 }
 
 .add-news:hover,
@@ -40,7 +41,7 @@
     border-radius: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
-    background-color: rgb(216, 210, 210);
+    background: linear-gradient(to left, #a8aaf7, #cf5fff);
     padding: 10px;
     box-shadow: 5px 5px 8px 3px rgb(0 0 0 / 48%)
 }
@@ -88,6 +89,10 @@
 
 .input_text {
     display: block;
+    outline: 0;
+}
+.input_text::placeholder {
+    color:rgb(209, 209, 209)
 }
 
 .input_text {
@@ -117,8 +122,8 @@
 .nav {
     width: 80px;
     position: absolute;
-    left: 2em;
-    top: 2em;  
+    left: 30px;
+    top: 22px;
     display: flex;
     flex-direction: column; 
 }
@@ -135,6 +140,7 @@
     align-items: center;
     transition: all 0.3s;
     box-shadow:  0px 0px 10px rgb(0 0 0 / 60%);
+    background: radial-gradient(#a8aaf7, #cf5fff);
 }
 
 .btm-nav-top {
@@ -161,7 +167,7 @@
 }
 
 .logginDog {
-    color: grey;
+    color: #c9c9c9;;
     font-size: 0.8em;
     font-weight: lighter;
     border: none;

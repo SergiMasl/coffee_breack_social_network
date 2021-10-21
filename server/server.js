@@ -76,10 +76,13 @@ app.post("/api/sign-in", jsonParser, async(req, res) => {
     const oldUsers = getUsers();
 
     let isUserExist = oldUsers[formData.userName]
-
     const oldUser = oldUsers[formData.userName]
-    let isPasswordVailed = checkPassword(req.body.password, oldUser.ciphertext, oldUser.passPhrase)
+    let isPasswordVailed;
 
+    if (isUserExist) {
+        isPasswordVailed = checkPassword(req.body.password, oldUser.ciphertext, oldUser.passPhrase)
+    }
+    
     if (isUserExist && isPasswordVailed) {
         const user = {
             userName: oldUser.userName,

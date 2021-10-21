@@ -73,7 +73,7 @@ class CreatNews extends Component {
                         <textarea 
                             className='input_text extra_space_text' 
                             onChange={this.changeText}
-                            placeholder='News'/>
+                            placeholder='Type your post...'/>
                     <button 
                         className='addPost' 
                         onClick={this.addPost}
