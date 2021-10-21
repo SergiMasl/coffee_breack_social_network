@@ -12,7 +12,7 @@ const notification = {
           customIcon: null,
           showIcon: true,
           showCloseButton: true,
-          autoclose: false,
+          autoclose: true,
           autotimeout: 3000,
           gap: 20,
           distance: 20,
